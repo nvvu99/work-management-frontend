@@ -1,0 +1,16 @@
+version: "3"
+services:
+  work_management_frontend:
+    build:
+      context: .
+      args:
+        HOST_UID: ${HOST_UID}
+        HOST_GID: ${HOST_GID}
+    user: node
+    tty: true
+    ports:
+      - ${WEB_PORT}:3000
+    volumes:
+      - .:/home/node/work-management-frontend
+    working_dir: /home/node/work-management-frontend
+    command: ./start-app.sh
